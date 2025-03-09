@@ -355,8 +355,10 @@
     const myBtn = document.getElementById('myBtn');
     myBtn.addEventListener('click', function(e) {
         let bodyParts = [
-            "脸颊", "手", "耳朵", "额头", "鼻子", "嘴巴", "脖子", "肩膀", "眼睛", "肚脐"
-        ];
+    "额头", "脸颊", "手背", "手心", "颈侧", "扰流翼", "肩膀", "膝盖", "脚背", "嘴唇",
+    "嘴角", "鼻尖", "胸口", "锁骨", "大腿内侧", "腰侧", "腹部", "屁股", "肩膀后侧"
+];
+
         let bodyPartElement = document.querySelector('#bodyPart');
         let randomPart = bodyParts[Math.floor(Math.random() * bodyParts.length)];
         bodyPartElement.innerHTML = randomPart;
