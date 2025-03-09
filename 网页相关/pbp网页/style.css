@@ -1,0 +1,87 @@
+body {
+    background-color: #FFF5CD;
+    background-image: url('CSS/image.png');
+    background-size: 100% auto;
+    position: relative;
+}
+
+/*for the title image*/
+.title-container {
+    position: absolute;
+    left: 455px;
+    top: 199px;
+}
+
+.title-image {
+    width: 518px;
+    height: 308px;
+}
+
+/* For screens smaller than 1440px width */
+@media (max-width: 1440px) {
+    .title-image {
+        width: 35vw;
+        height: auto;
+    }
+}
+
+/* For screens smaller than 1024px width */
+@media (max-width: 1024px) {
+    .title-image {
+        width: 45vw;
+        height: auto;
+    }
+}
+
+/* For mobile devices (e.g., smaller than 600px) */
+@media (max-width: 600px) {
+    .title-image {
+        width: 70vw;
+        height: auto;
+    }
+}
+
+/*for the buttons*/
+.button-image {
+    width: 278px;
+    height: 101px;
+}
+
+/* For screens smaller than 1440px width */
+@media (max-width: 1440px) {
+    .button-image {
+        width: 19vw;
+        height: auto;
+    }
+}
+
+/* For screens smaller than 1024px width */
+@media (max-width: 1024px) {
+    .button-image {
+        width: 27vw;
+        height: auto;
+    }
+}
+
+/* For mobile devices (e.g., smaller than 600px) */
+@media (max-width: 600px) {
+    .button-image {
+        width: 80vw;
+        height: auto;
+    }
+}
+
+.buttons-wrapper {
+    display: flex;
+    justify-content: center; /* 居中按钮 */
+    margin: 20px 0;
+    position: absolute;
+    top: 508px; /* 调整按钮的垂直位置 */
+    left: 50%; /* 水平居中 */
+    transform: translateX(-50%); /* 水平居中 */
+}
+
+.button-group {
+    display: inline-block;
+    margin: 0 20px; /* 调整按钮之间的间距 */
+}

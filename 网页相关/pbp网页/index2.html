@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @font-face {
+            font-family: 'LanaPixel';
+            src: url('../font/LanaPixel.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'FusionPixel';
+            src: url('../font/fusion-pixel-10px-monospaced-zh_hans.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: '全小素';
+            src: url('../font/全小素.ttf') format('truetype');
+        }
+
+        body {
+            font-family: 'LanaPixel', sans-serif;
+            background-color: #FFF5CD;
+            background-image: url('CSS/image.png');
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* 主标题图片样式 */
+        .main-title {
+            position: absolute;
+            top: 1%; /* 电脑端垂直位置保持不变 */
+            left: 42%; /* 电脑端左移 */
+            transform: translateX(-50%) scale(0.33); /* 电脑端缩小为1/3并居中 */
+            width: 50%; /* 使用百分比宽度 */
+            max-width: 600px; /* 最大宽度 */
+            height: auto;
+        }
+
+        /* 按钮容器 */
+        .buttons-wrapper {
+            display: flex;
+            flex-direction: column; /* 默认垂直排列 */
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 55%; /* 使用百分比定位 */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%; /* 使用百分比宽度 */
+            max-width: 800px; /* 最大宽度 */
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2vw; /* 按钮之间的间距 */
+        }
+
+        /* 按钮样式 */
+        .button-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 20vw; /* 使用视口宽度单位 */
+            height: 10vw; /* 使用视口高度单位 */
+            max-width: 200px; /* 最大宽度 */
+            max-height: 100px; /* 最大高度 */
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            cursor: pointer;
+        }
+
+        /* General 按钮背景 */
+        .button-container.general-button {
+            background-image: url('../icons/desktop按钮.png');
+        }
+
+        /* Kiss Kiss 按钮背景 */
+        .button-container.kiss-button {
+            background-image: url('../icons/desktop按钮.png');
+        }
+
+        /* More 按钮背景 */
+        .button-container.more-button {
+            background-image: url('../icons/desktop按钮.png');
+        }
+
+        /* 按钮文字样式 */
+        .button-text {
+            font-family: '全小素', sans-serif;
+            font-size: 2vw; /* 调整文字大小 */
+            color: #8B0000;
+            display: flex;
+            align-items: center;
+            gap: 1vw; /* 使用视口宽度单位 */
+        }
+
+        /* 爱心图标样式 */
+        .heart {
+            width: 3vw; /* 调大爱心图标 */
+            height: 3vw;
+            max-width: 30px; /* 最大宽度 */
+            max-height: 30px; /* 最大高度 */
+            background-image: url('../icons/爱心符号.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        /* 屏幕下方居中图片 */
+        .bottom-image {
+            position: absolute;
+            bottom: 0; /* 使图片贴着屏幕最底部 */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20vw; /* 图片宽度 */
+            max-width: 300px; /* 最大宽度 */
+            height: auto; /* 高度自适应 */
+            z-index: 1; /* 确保图片在底层 */
+        }
+
+        /* 媒体查询：针对平板端和电脑端优化 */
+        @media (min-width: 769px) {
+            /* 按钮容器 */
+            .buttons-wrapper {
+                flex-direction: row; /* 按钮在同一行 */
+                gap: 3vw; /* 按钮之间的间距 */
+            }
+
+            /* 按钮组 */
+            .button-group {
+                display:contents; /* 按钮组内的按钮在同一行 */
+                gap: 3vw; /* 按钮之间的间距 */
+            }
+        }
+
+        /* 媒体查询：针对手机端优化 */
+        @media (max-width: 768px) {
+            /* 主标题图片 */
+            .main-title {
+                top: 5%; /* 调整垂直位置 */
+                left: 20%; /* 居中 */
+                transform: translateX(-50%) scale(0.25); /* 缩小为1/4并居中 */
+            }
+
+            /* 按钮容器 */
+            .buttons-wrapper {
+                top: 50%; /* 调整垂直位置，往上挪 */
+                flex-direction: column; /* 垂直排列按钮 */
+                gap: 2vh; /* 按钮之间的间距 */
+            }
+
+            /* 按钮样式 */
+            .button-container {
+                width: 30vw; /* 增大按钮宽度 */
+                height: 15vw; /* 增大按钮高度 */
+                max-width: 150px; /* 最大宽度 */
+                max-height: 75px; /* 最大高度 */
+            }
+
+            /* 按钮文字样式 */
+            .button-text {
+                font-size: 3vw; /* 增大字体大小 */
+            }
+
+            /* 爱心图标样式 */
+            .heart {
+                width: 4vw; /* 增大爱心图标大小 */
+                height: 4vw;
+                max-width: 40px; /* 最大宽度 */
+                max-height: 40px; /* 最大高度 */
+            }
+
+            /* 屏幕下方居中图片 */
+            .bottom-image {
+                width: 60vw; /* 增大图片宽度 */
+                bottom: 1%; /* 调整垂直位置 */
+            }
+
+            /* More 按钮往下挪 */
+            .button-group.more-group {
+                margin-top: 10%; /* 增加间距，使其往下挪 */
+            }
+
+            /* General 和 Kiss Kiss 按钮往上挪 */
+            .button-group.general-kiss-group {
+                margin-top: 5%; /* 往上挪 */
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- 主标题图片 -->
+<div class="main-title">
+    <img src="CSS/Title.png" alt="Driftrod Homie Day Challenge">
+</div>
+
+<!-- 按钮容器 -->
+<div class="buttons-wrapper">
+    <!-- More 按钮 -->
+    <div class="button-group more-group">
+        <a href="more.html">
+            <div class="button-container more-button">
+                <div class="button-text">
+                    More
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <!-- General 和 Kiss Kiss 按钮容器 -->
+    <div class="button-group general-kiss-group">
+        <a href="general.html">
+            <div class="button-container general-button">
+                <div class="button-text">
+                    General
+                </div>
+            </div>
+        </a>
+        <a href="kisskiss.html">
+            <div class="button-container kiss-button">
+                <div class="button-text">
+                    Kiss Kiss
+                    <span class="heart"></span> <!-- 爱心图标 -->
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+<!-- 屏幕下方居中图片 -->
+<div class="bottom-image">
+    <img src="CSS/小人+阴影.png" alt="小人+阴影" style="width: 100%; height: auto;">
+</div>
+</body>
+</html>

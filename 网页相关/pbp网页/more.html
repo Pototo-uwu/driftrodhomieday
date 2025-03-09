@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driftrod Homie Day Challenge</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @font-face {
+            font-family: 'LanaPixel';
+            src: url('../font/LanaPixel.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'FusionPixel';
+            src: url('../font/fusion-pixel-10px-monospaced-zh_hans.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: '全小素';
+            src: url('../font/全小素.ttf') format('truetype');
+        }
+        body {
+            font-family: 'LanaPixel', sans-serif;
+            background-color: #FFF5CD;
+            background-image: url('CSS/image.png');
+            background-size: cover; /* 背景图覆盖整个屏幕 */
+            margin: 0;
+            padding: 0;
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 左上角标题图片 */
+        .left-image {
+            position: absolute;
+            top: 17%; /* 使用百分比定位 */
+            left: 2%; /* 使用百分比定位 */
+            width: 20%; /* 使用百分比宽度 */
+            max-width: 500px; /* 最大宽度 */
+            height: auto;
+            transform: scale(0.2); /* 电脑端保持不变 */
+            transform-origin: top left;
+        }
+
+        /* 右上角按钮容器 */
+        .top-right-buttons {
+            position: absolute;
+            top: 17%; /* 使用百分比定位 */
+            right: 2%; /* 使用百分比定位 */
+            display: flex;
+            align-items: center;
+            gap: 2vw; /* 使用视口宽度单位 */
+        }
+
+        /* 右上角按钮样式 */
+        .top-right-buttons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 150px; /* 固定宽度 */
+            height: 50px; /* 固定高度 */
+            background-image: url('CSS/右上角小按键框.png');
+            background-size: contain; /* 保持按钮背景图完整显示 */
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        /* 右上角按钮左侧的英文文字 */
+        .top-right-text {
+            font-family: 'FusionPixel', sans-serif; /* 使用 FusionPixel 字体 */
+            font-size: 2vw; /* 使用视口宽度单位 */
+            color: #8B0000; /* 暗红色文字 */
+            margin-right: 2vw; /* 使用视口宽度单位 */
+        }
+
+        /* General 按钮 */
+        .general-button {
+            background-image: url('../icons/desktop按钮.png');
+        }
+
+        /* Kiss Kiss 按钮 */
+        .kisskiss-button {
+            background-image: url('../icons/desktop按钮.png');
+        }
+
+        /* 按钮中的文字 */
+        .button-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #8B0000; /* 暗红色文字 */
+            font-family: 'FusionPixel', sans-serif; /* 使用 FusionPixel 字体 */
+            font-size: 1.5vw; /* 使用视口宽度单位 */
+        }
+
+        /* 主要内容 */
+        .content {
+            text-align: center;
+            margin-top: 10px; /* 往上调整内容区域 */
+        }
+
+        /* 更多功能文字样式 */
+        .more-text {
+            font-family: 'LanaPixel', sans-serif; /* 使用 /font/ 目录下的字体 */
+            font-size: 4vw; /* 使用视口宽度单位 */
+            color: #8B0000; /* 暗红色文字 */
+            margin-top: 24px; /* 调整顶部间距 */
+        }
+
+        /* 媒体查询：针对手机端优化 */
+        @media (max-width: 768px) {
+            /* 左上角标题图片 */
+            .left-image {
+                top: 12%; /* 调整垂直位置 */
+                left: 5%; /* 调整水平位置 */
+                width: 30%; /* 增大宽度 */
+                transform: scale(0.08); /* 缩小为原来的8% */
+            }
+
+            /* 右上角按钮容器 */
+            .top-right-buttons {
+                top: 12%; /* 调整垂直位置 */
+                right: 1%; /* 调整水平位置 */
+                gap: 5px; /* 调整按钮间距 */
+            }
+
+            /* 右上角按钮 */
+            .top-right-buttons a {
+                width: 120px; /* 调整按钮宽度 */
+                height: 40px; /* 调整按钮高度 */
+            }
+
+            /* 按钮中的文字 */
+            .button-text {
+                font-size: 14px; /* 调整字体大小 */
+            }
+
+            /* 更多功能文字样式 */
+            .more-text {
+                font-size: 6vw; /* 增大字体大小 */
+                margin-top: 10vh; /* 调整顶部间距 */
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- 左上角标题图片 -->
+<div class="left-image">
+    <img src="CSS/Title.png" alt="Title Image">
+</div>
+
+<!-- 右上角按钮 -->
+<div class="top-right-buttons">
+<!--    <div class="top-right-text">| More challenge |</div>-->
+    <a href="general.html" class="general-button">
+        <span class="button-text">General</span>
+    </a>
+    <a href="kisskiss.html" class="kisskiss-button">
+        <span class="button-text">KissKiss</span>
+    </a>
+</div>
+
+<!-- 主要内容 -->
+<div class="content">
+    <div class="more-text">更多功能，敬请期待。可以关注tumblr账号获取最新消息@pototouwu
+    </div>
+</div>
+
+<!-- 屏幕下方居中图片 -->
+<div class="bottom-image">
+    <img src="CSS/小人+阴影.png" alt="小人+阴影" style="width: 100%; height: auto;">
+</div>
+</body>
+</html>

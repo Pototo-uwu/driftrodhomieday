@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driftrod Homie Day Challenge</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @font-face {
+            font-family: 'LanaPixel';
+            src: url('../font/LanaPixel.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: 'FusionPixel';
+            src: url('../font/fusion-pixel-10px-monospaced-zh_hans.ttf') format('truetype');
+        }
+        @font-face {
+            font-family: '全小素';
+            src: url('../font/全小素.ttf') format('truetype');
+        }
+
+        body {
+            font-family: 'LanaPixel', sans-serif;
+            background-color: #FFF5CD;
+            background-image: url('CSS/image.png');
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* 左上角标题图片 */
+        .left-image {
+            position: absolute;
+            top: 17%;
+            left: 2%;
+            width: 20%;
+            max-width: 500px;
+            height: auto;
+            transform: scale(0.2); /* 电脑端保持不变 */
+            transform-origin: top left;
+        }
+
+        /* 右上角按钮容器 */
+        .top-right-buttons {
+            position: absolute;
+            top: 17%;
+            right: 2%;
+            display: flex;
+            align-items: center;
+            gap: 20px; /* 增加按钮间距 */
+            z-index: 10; /* 确保按钮在上层 */
+        }
+
+        /* 右上角按钮样式 */
+        .top-right-buttons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 150px; /* 固定宽度 */
+            height: 50px; /* 固定高度 */
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        /* General 按钮 */
+        .general-button {
+            background-image: url('CSS/右上角小按键框.png');
+        }
+
+        /* Home 按钮 */
+        .home-button {
+            background-image: url('CSS/右上角小按键框.png');
+        }
+
+        /* 按钮中的文字 */
+        .button-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #8B0000;
+            font-family: '全小素', sans-serif;
+            font-size: 18px; /* 固定字体大小 */
+            display: flex;
+            align-items: center;
+            gap: 5px; /* 文字和爱心图标之间的间距 */
+        }
+
+        /* 爱心图标样式 */
+        .heart-icon {
+            width: 20px; /* 固定爱心图标大小 */
+            height: 20px;
+            background-image: url('../icons/爱心符号.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .content {
+            text-align: center;
+            margin-top: 10px;
+            z-index: 5; /* 确保内容在上层 */
+        }
+
+        /* 生成按钮 */
+        .generate-button {
+            width: 200px; /* 固定宽度 */
+            height: 80px; /* 固定高度 */
+            background-image: url('../icons/desktop按钮.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            position: absolute;
+            bottom: 25%; /* 调整垂直位置 */
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'LanaPixel', sans-serif; /* 使用第一种字体 */
+            font-size: 24px; /* 增大字体大小 */
+            color: #8B0000;
+            z-index: 10; /* 确保按钮在上层 */
+        }
+
+        /* 屏幕下方居中图片 */
+        .bottom-image {
+            position: absolute;
+            bottom: 0; /* 使图片贴着屏幕最底部 */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20vw; /* 图片宽度 */
+            max-width: 300px; /* 最大宽度 */
+            height: auto; /* 高度自适应 */
+            z-index: 1; /* 确保图片在底层 */
+        }
+
+        .text-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            position: absolute; /* 改为绝对定位 */
+            top: 30%; /* 调整垂直位置 */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5; /* 确保内容在上层 */
+        }
+
+        .label-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2vh;
+        }
+
+        /* 他们将、在、做的文字样式 */
+        .label-text {
+            font-family: 'LanaPixel', sans-serif;
+            font-size: 30px; /* 增大字体大小 */
+            margin-right: 10px; /* 固定间距 */
+            color: #8B0000;
+        }
+
+        /* 文本框样式 */
+        .text-box {
+            font-family: 'LanaPixel', sans-serif;
+            font-size: 30px; /* 增大字体大小 */
+            padding: 10px; /* 固定内边距 */
+            border: none;
+            background-image: url('CSS/label.png');
+            background-size: 100% 100%; /* 背景图片撑满 */
+            background-position: center;
+            border-radius: 10px; /* 固定圆角 */
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            width: 180px; /* 改小宽度 */
+            height: 30px; /* 改小高度 */
+            display: flex;
+            justify-content: center; /* 左对齐 */
+            align-items: center;
+            text-align: left; /* 文字左对齐 */
+            color: #8B0000;
+            position: relative; /* 相对定位 */
+            overflow: hidden; /* 确保图片不超出圆角 */
+        }
+
+        /* 灰色框图片样式 */
+        .gray-box-image {
+            width: 100%; /* 图片宽度撑满 */
+            height: 100%; /* 图片高度撑满 */
+            object-fit: cover; /* 保持图片比例，撑满容器 */
+            border-radius: 10px; /* 保持圆角样式 */
+            position: absolute; /* 绝对定位 */
+            top: 0;
+            left: 0;
+            z-index: 1; /* 确保图片在底层 */
+            box-shadow: none; /* 移除阴影 */
+        }
+
+        /* 生成文字的样式 */
+        .generated-text {
+            font-family: 'LanaPixel', sans-serif;
+            font-size: 30px; /* 调整字体大小 */
+            color: #8B0000;
+            z-index: 2; /* 确保文字在上层 */
+            position: relative; /* 相对定位 */
+        }
+
+        /* 媒体查询：针对平板端优化 */
+        @media (max-width: 1024px) {
+            /* 左上角标题图片 */
+            .left-image {
+                top: 10%; /* 调整垂直位置 */
+                left: 5%; /* 调整水平位置 */
+                width: 25%; /* 增大宽度 */
+                transform: scale(0.08); /* 缩小为原来的8% */
+            }
+
+            /* 右上角按钮容器 */
+            .top-right-buttons {
+                top: 10%; /* 调整垂直位置 */
+                right: 5%; /* 调整水平位置 */
+                gap: 15px; /* 调整按钮间距 */
+            }
+
+            /* 右上角按钮 */
+            .top-right-buttons a {
+                width: 130px; /* 调整按钮宽度 */
+                height: 45px; /* 调整按钮高度 */
+            }
+
+            /* 按钮中的文字 */
+            .button-text {
+                font-size: 16px; /* 调整字体大小 */
+            }
+
+            /* 爱心图标 */
+            .heart-icon {
+                width: 18px; /* 调整爱心图标大小 */
+                height: 18px;
+            }
+
+            /* 生成按钮 */
+            .generate-button {
+                width: 130px; /* 调整宽度 */
+                height: 50px; /* 调整高度 */
+                font-size: 18px; /* 调整字体大小 */
+                bottom: 25%; /* 调整垂直位置 */
+            }
+
+            /* 他们将、在、做的文字样式 */
+            .label-text {
+                font-size: 25px; /* 调整字体大小 */
+            }
+
+            /* 文本框样式 */
+            .text-box {
+                width: 150px; /* 调整宽度 */
+                height: 25px; /* 调整高度 */
+                font-size: 25px; /* 调整字体大小 */
+            }
+
+            /* 生成文字的样式 */
+            .generated-text {
+                font-size: 18px; /* 调整字体大小 */
+            }
+
+            /* 屏幕下方居中图片 */
+            .bottom-image {
+                width: 25vw; /* 增大图片宽度 */
+                bottom: 1%; /* 调整垂直位置 */
+            }
+
+            /* 三行布局往上挪 */
+            .text-container {
+                top: 25%; /* 调整垂直位置 */
+            }
+        }
+
+        /* 媒体查询：针对手机端优化 */
+        @media (max-width: 768px) {
+            /* 左上角标题图片 */
+            .left-image {
+                top: 12%; /* 调整垂直位置 */
+                left: 5%; /* 调整水平位置 */
+                width: 30%; /* 增大宽度 */
+                transform: scale(0.08); /* 缩小为原来的8% */
+            }
+
+            /* 右上角按钮容器 */
+            .top-right-buttons {
+                top: 12%; /* 调整垂直位置 */
+                right: 1%; /* 调整水平位置 */
+                gap: 5px; /* 调整按钮间距 */
+            }
+
+            /* 右上角按钮 */
+            .top-right-buttons a {
+                width: 120px; /* 调整按钮宽度 */
+                height: 40px; /* 调整按钮高度 */
+            }
+
+            /* 按钮中的文字 */
+            .button-text {
+                font-size: 14px; /* 调整字体大小 */
+            }
+
+            /* 爱心图标 */
+            .heart-icon {
+                width: 16px; /* 调整爱心图标大小 */
+                height: 16px;
+            }
+
+            /* 生成按钮 */
+            .generate-button {
+                width: 100px; /* 调整宽度 */
+                height: 40px; /* 调整高度 */
+                font-size: 16px; /* 调整字体大小 */
+                bottom: 25%; /* 调整垂直位置 */
+            }
+
+            /* 他们将、在、做的文字样式 */
+            .label-text {
+                font-size: 20px; /* 调整字体大小 */
+                width: 60px;
+            }
+
+            /* 文本框样式 */
+            .text-box {
+                width: 120px; /* 调整宽度 */
+                height: 20px; /* 调整高度 */
+                font-size: 20px; /* 调整字体大小 */
+            }
+
+            /* 生成文字的样式 */
+            .generated-text {
+                font-size: 16px; /* 调整字体大小 */
+            }
+
+            /* 屏幕下方居中图片 */
+            .bottom-image {
+                width: 60vw; /* 增大图片宽度 */
+                bottom: 1%; /* 调整垂直位置 */
+            }
+
+            /* 三行布局往上挪 */
+            .text-container {
+                top: 30%; /* 调整垂直位置 */
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- 左上角标题图片 -->
+<div class="left-image">
+    <img src="CSS/Title.png" alt="Title Image">
+</div>
+
+<!-- 右上角按钮 -->
+<div class="top-right-buttons">
+    <a href="kisskiss.html" class="general-button">
+        <span class="button-text">
+            KissKiss
+            <span class="heart-icon"></span> <!-- 新增爱心图标 -->
+        </span>
+    </a>
+    <a href="index2.html" class="home-button">
+        <span class="button-text">Home</span>
+    </a>
+</div>
+
+<!-- 主要内容 -->
+<div class="content">
+    <div class="generate-button" id="generateBtn">Generate</div>
+    <div class="text-container">
+        <div class="label-row">
+            <div class="label-text">他们将</div>
+            <div class="text-box">
+                <img src="../icons/移动端灰色框.png" alt="Image" class="gray-box-image">
+                <div class="generated-text" id="adjectiveText"></div>
+            </div>
+        </div>
+        <div class="label-row">
+            <div class="label-text">&ensp;&ensp;&nbsp;&nbsp;&nbsp;在</div>
+            <div class="text-box">
+                <img src="../icons/移动端灰色框.png" alt="Image" class="gray-box-image">
+                <div class="generated-text" id="placeText"></div>
+            </div>
+        </div>
+        <div class="label-row">
+            <div class="label-text">&ensp;&nbsp;（做）</div>
+            <div class="text-box">
+                <img src="../icons/移动端灰色框.png" alt="Image" class="gray-box-image">
+                <div class="generated-text" id="actionText"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 屏幕下方居中图片 -->
+<div class="bottom-image">
+    <img src="CSS/小人+阴影.png" alt="小人+阴影" style="width: 100%; height: auto;">
+</div>
+
+<script>
+    document.getElementById('generateBtn').addEventListener('click', function() {
+        let adjectives = [
+    "开心地", "愤怒地", "心虚地", "害怕地", "伤心地", "无语地", "激动地", "夸张地", "惊讶地", "尴尬地",
+    "怀疑地", "窃喜地", "冷漠地", "欣慰地", "放松地", "焦虑地", "无聊地", "烦躁地", "不屑地", "不耐烦地",
+    "感动地", "遗憾地", "嫉妒地", "斗志满满地", "满足地", "羞愧地", "失控地", "委屈地", "嫌弃地"
+];
+
+let places = [
+    "舰长的办公室里", "Prowl的办公室", "大厅里", "月卫二上", "地球上", "汽车人总部里", "背离记里", "外星集市上",
+    "拍卖会上", "油吧里", "武器库里", "医疗仓里", "船员宿舍里", "废弃的太空站上", "小飞船上", "边境星球上",
+    "广播室里", "实验室里", "舰长的休息室里", "旧城区里", "黑市里", "陨石群里", "竞技场里", "电玩城里", "角斗场里",
+    "月球上", "海洋里", "火山口", "铁堡街道上", "New Crystal City里", "垃圾场里"
+];
+
+let actions = [
+    "做试卷", "写演讲稿", "喝高纯", "布置陷阱", "打游戏", "发呆", "冥想", "打架", "比赛", "八卦别人",
+    "抢地盘", "rap battle", "玩role play", "写报告", "试图激怒别人", "玩飞盘", "模仿别人", "打牌",
+    "取外号", "讲冷笑话", "跳舞", "用奇怪的方式交流", "涂鸦", "做憋笑挑战", "冷战", "吵架", "做体操",
+    "假装自己是卧底", "吃零食", "购物", "捡垃圾", "雕刻东西", "刷短视频", "倒立", "读故事书", "调戏对方"
+];
+
+
+        let randomAdjective = adjectives[Math.floor(Math.random() * adjectives.length)];
+        let randomPlace = places[Math.floor(Math.random() * places.length)];
+        let randomAction = actions[Math.floor(Math.random() * actions.length)];
+
+        // 更新生成的文字
+        document.getElementById('adjectiveText').textContent = randomAdjective;
+        document.getElementById('placeText').textContent = randomPlace;
+        document.getElementById('actionText').textContent = randomAction;
+    });
+</script>
+</body>
+</html>
