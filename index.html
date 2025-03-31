@@ -240,7 +240,25 @@
 
 <!-- 屏幕下方居中图片 -->
 <div class="bottom-image">
-    <img src="pbp网页/CSS/小人+阴影.png" alt="小人+阴影" style="width: 100%; height: auto;">
+    <img id="random-image" src="" alt="随机图片" style="width: 100%; height: auto;">
 </div>
+
+<script>
+    // Define images with weighted probabilities
+    const images = [
+        { src: "pbp网页/CSS/小人+阴影.png", weight: 0.65 }, // 65% chance
+        { src: "pbp网页/CSS/小人+阴影2.png", weight: 0.35 }  // 35% chance
+    ];
+
+    // Generate a random number between 0 and 1
+    const randomNum = Math.random();
+
+    // Select an image based on probability
+    const selectedImage = randomNum < images[0].weight ? images[0].src : images[1].src;
+
+    // Apply the selected image to the <img> tag
+    document.getElementById("random-image").src = selectedImage;
+</script>
+
 </body>
 </html>
